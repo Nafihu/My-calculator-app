@@ -1,6 +1,6 @@
 const display = document.getElementById('display');
-let inputA = null;   // First operand
-let operator = null; // Operator to be used
+let inputA = null;
+let operator = null;
 
 function appendToDisplay(input) {
     display.value += input;
@@ -14,10 +14,9 @@ function clearDisplay() {
 
 function setOperator(op) {
     if (inputA === null) {
-        // Get the first input before setting the operator
         inputA = parseFloat(display.value);
         operator = op;
-        display.value = ""; // Clear the display for next input
+        display.value = "";
     }
 }
 
@@ -26,7 +25,6 @@ function calculate() {
         const inputB = parseFloat(display.value);
         let result;
 
-        // Perform the calculation based on the operator
         if (operator === '+') {
             result = inputA + inputB;
         } else if (operator === '-') {
@@ -35,20 +33,18 @@ function calculate() {
             result = inputA * inputB;
         } else if (operator === '/') {
             if (inputB === 0) {
-                display.value = "Error: Division by 0"; // Handle division by zero
+                display.value = "Error: Division by 0";
                 return;
             }
             result = inputA / inputB;
         }
 
-        display.value = result; // Show the result in the display
-        // Reset the inputs for a new calculation
+        display.value = result;
         inputA = null;
         operator = null;
     }
 }
 
-// Define operator functions
 function add() {
     setOperator('+');
 }
